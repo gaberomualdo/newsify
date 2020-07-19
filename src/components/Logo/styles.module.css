@@ -1,0 +1,26 @@
+.icon,
+.header {
+  display: block;
+  float: left;
+  height: 3rem;
+  line-height: 3rem;
+  width: auto;
+  box-sizing: border-box;
+  color: var(--blue-color);
+  fill: var(--blue-color);
+}
+
+.icon {
+  padding: 0.5rem 0;
+  margin-right: 1rem;
+}
+
+.header {
+  font-size: 1.3rem;
+}
+
+@media only screen and (max-width: 20rem) {
+  .header {
+    font-size: 1.1rem;
+  }
+}

@@ -1,0 +1,9 @@
+.responsiveContainer {
+  --max-width: 84rem;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+}

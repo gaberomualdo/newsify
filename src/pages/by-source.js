@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Select from 'react-select';
 import { Container, ErrorMessage, Article, Loading } from '../components';
 import { useState } from 'react';
+import { getAPIBaseURL } from '../lib/getAPIBaseURL';
 
 export default function Home(props) {
   const [articles, setArticles] = useState(props.articles);
@@ -73,7 +74,7 @@ const getArticlesFromSources = async (sources) => {
   });
   const sourceListStr = sourceValues.join(',');
 
-  const responseFromAPI = await fetch(`http://localhost:1000/api/by-source?sources=${sourceListStr}`);
+  const responseFromAPI = await fetch(`${getAPIBaseURL()}/api/by-source?sources=${sourceListStr}`);
   if (responseFromAPI.status === 200) {
     return { props: { articles: (await responseFromAPI.json()).articles } };
   } else {
@@ -85,7 +86,7 @@ export async function getServerSideProps() {
   let presetSources = [];
 
   let sources = [];
-  const sourcesResponseFromAPI = await fetch('http://localhost:1000/api/sources');
+  const sourcesResponseFromAPI = await fetch(`${getAPIBaseURL()}/api/sources`);
   if (sourcesResponseFromAPI.status === 200) {
     sources = (await sourcesResponseFromAPI.json()).sources.map((e) => {
       return { value: e.id, label: e.name };

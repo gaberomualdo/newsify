@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Select from 'react-select';
 import { Container, ErrorMessage, Article, Loading } from '../components';
 import { useState } from 'react';
+import { getAPIBaseURL } from '../lib/getAPIBaseURL';
 
 export default function Home(props) {
   const [articles, setArticles] = useState(props.articles);
@@ -57,7 +58,7 @@ export default function Home(props) {
 }
 
 const getArticlesFromCategory = async (category) => {
-  const responseFromAPI = await fetch(`http://localhost:1000/api/by-category?category=${category.value}`);
+  const responseFromAPI = await fetch(`${getAPIBaseURL()}/api/by-category?category=${category.value}`);
   if (responseFromAPI.status === 200) {
     return { props: { articles: (await responseFromAPI.json()).articles } };
   } else {
@@ -67,7 +68,7 @@ const getArticlesFromCategory = async (category) => {
 
 export async function getServerSideProps() {
   let categories = [];
-  const categoriesResponseFromAPI = await fetch('http://localhost:1000/api/categories');
+  const categoriesResponseFromAPI = await fetch(`${getAPIBaseURL()}/api/categories`);
   if (categoriesResponseFromAPI.status === 200) {
     categories = (await categoriesResponseFromAPI.json()).categories.map((e) => {
       return { value: e.id, label: e.name };

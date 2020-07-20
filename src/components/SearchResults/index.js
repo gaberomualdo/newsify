@@ -1,5 +1,6 @@
 import { ResponsiveContainer, Loading, ErrorMessage, Article } from '../';
 import styles from './styles.module.css';
+import { getAPIBaseURL } from '../../lib/getAPIBaseURL';
 
 class SearchResults extends React.Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class SearchResults extends React.Component {
 
   search() {
     this.setState({ articles: [], errorCode: undefined, resultsSearchQuery: this.props.searchQuery });
-    fetch(`http://localhost:1000/api/search?q=${this.props.searchQuery}`).then((responseFromAPI) => {
+    fetch(`${getAPIBaseURL()}/api/search?q=${this.props.searchQuery}`).then((responseFromAPI) => {
       if (responseFromAPI.status === 200) {
         responseFromAPI.json().then((json) => {
           const newArticles = json.articles;

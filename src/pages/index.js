@@ -1,6 +1,6 @@
 import Head from 'next/head';
-import { useState } from 'react';
-import { Container, Article, Loading, ErrorMessage } from '../components';
+import { Article, Container, ErrorMessage } from '../components';
+import { getAPIBaseURL } from '../lib/getAPIBaseURL';
 
 export default function Home({ errorCode, articles }) {
   return (
@@ -29,7 +29,7 @@ export default function Home({ errorCode, articles }) {
 }
 
 export async function getServerSideProps() {
-  const responseFromAPI = await fetch('http://localhost:1000/api/latest-news');
+  const responseFromAPI = await fetch(`${getAPIBaseURL()}/api/latest-news`);
   if (responseFromAPI.status === 200) {
     return { props: { articles: (await responseFromAPI.json()).articles } };
   } else {

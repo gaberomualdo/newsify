@@ -18,7 +18,7 @@ export default function Home(props) {
     if (sources.length > 0) {
       setHasSelectedSources(true);
 
-      const data = await getArticlesFromSources(sources);
+      const data = await getArticlesFromSources(sources, props.APIBaseURL);
       const newArticles = data.props.articles;
       const newErrorCode = data.props.errorCode;
 
@@ -35,7 +35,7 @@ export default function Home(props) {
         <title>Next.js News &bull; News By Source</title>
       </Head>
 
-      <Container currentTab={1}>
+      <Container currentTab={1} APIBaseURL={props.APIBaseURL}>
         <div style={{ marginBottom: '2rem' }}>
           <Select
             defaultValue={props.presetSources}
@@ -67,14 +67,14 @@ export default function Home(props) {
   );
 }
 
-const getArticlesFromSources = async (sources) => {
+const getArticlesFromSources = async (sources, APIBaseURL = getAPIBaseURL()) => {
   let sourceValues = [];
   sources.forEach((source) => {
     sourceValues.push(source.value);
   });
   const sourceListStr = sourceValues.join(',');
 
-  const responseFromAPI = await fetch(`${getAPIBaseURL()}/api/by-source?sources=${sourceListStr}`);
+  const responseFromAPI = await fetch(`${APIBaseURL}/api/by-source?sources=${sourceListStr}`);
   if (responseFromAPI.status === 200) {
     return { props: { articles: (await responseFromAPI.json()).articles } };
   } else {
@@ -105,6 +105,8 @@ export async function getServerSideProps() {
   let returnVal = await getArticlesFromSources(presetSources);
   returnVal.props.sources = sources;
   returnVal.props.presetSources = presetSources;
+
+  returnVal.props.APIBaseURL = getAPIBaseURL();
 
   return returnVal;
 }

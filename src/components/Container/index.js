@@ -42,6 +42,7 @@ class Container extends React.Component {
             {this.props.children}
           </Tabs>
           <SearchResults
+            APIBaseURL={this.props.APIBaseURL}
             displayed={this.state.searching}
             searchQuery={this.state.searchQuery}
             onSearchExit={() => {

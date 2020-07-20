@@ -12,7 +12,7 @@ export default function Home(props) {
     setArticles([]);
     setErrorCode(undefined);
 
-    const data = await getArticlesFromCategory(category);
+    const data = await getArticlesFromCategory(category, props.APIBaseURL);
     const newArticles = data.props.articles;
     const newErrorCode = data.props.errorCode;
 
@@ -26,7 +26,7 @@ export default function Home(props) {
         <title>Next.js News &bull; News By Topic</title>
       </Head>
 
-      <Container currentTab={2}>
+      <Container currentTab={2} APIBaseURL={props.APIBaseURL}>
         <div style={{ marginBottom: '2rem' }}>
           <Select
             defaultValue={props.presetCategory}
@@ -57,8 +57,8 @@ export default function Home(props) {
   );
 }
 
-const getArticlesFromCategory = async (category) => {
-  const responseFromAPI = await fetch(`${getAPIBaseURL()}/api/by-category?category=${category.value}`);
+const getArticlesFromCategory = async (category, APIBaseURL = getAPIBaseURL()) => {
+  const responseFromAPI = await fetch(`${APIBaseURL}/api/by-category?category=${category.value}`);
   if (responseFromAPI.status === 200) {
     return { props: { articles: (await responseFromAPI.json()).articles } };
   } else {
@@ -80,6 +80,8 @@ export async function getServerSideProps() {
   let returnVal = await getArticlesFromCategory(presetCategory);
   returnVal.props.categories = categories;
   returnVal.props.presetCategory = presetCategory;
+
+  returnVal.props.APIBaseURL = getAPIBaseURL();
 
   return returnVal;
 }

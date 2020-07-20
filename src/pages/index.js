@@ -2,14 +2,14 @@ import Head from 'next/head';
 import { Article, Container, ErrorMessage } from '../components';
 import { getAPIBaseURL } from '../lib/getAPIBaseURL';
 
-export default function Home({ errorCode, articles }) {
+export default function Home({ errorCode, articles, APIBaseURL }) {
   return (
     <>
       <Head>
         <title>Next.js News</title>
       </Head>
 
-      <Container currentTab={0}>
+      <Container currentTab={0} APIBaseURL={APIBaseURL}>
         {articles && articles.length > 0 ? (
           <>
             {articles.map((article, idx) => (
@@ -30,9 +30,16 @@ export default function Home({ errorCode, articles }) {
 
 export async function getServerSideProps() {
   const responseFromAPI = await fetch(`${getAPIBaseURL()}/api/latest-news`);
+
+  let returnVal;
+
   if (responseFromAPI.status === 200) {
-    return { props: { articles: (await responseFromAPI.json()).articles } };
+    returnVal = { props: { articles: (await responseFromAPI.json()).articles } };
   } else {
-    return { props: { errorCode: responseFromAPI.status } };
+    returnVal = { props: { errorCode: responseFromAPI.status } };
   }
+
+  returnVal.props.APIBaseURL = getAPIBaseURL();
+
+  return returnVal;
 }

@@ -17,7 +17,7 @@ class SearchResults extends React.Component {
 
   search() {
     this.setState({ articles: [], errorCode: undefined, resultsSearchQuery: this.props.searchQuery });
-    fetch(`${getAPIBaseURL()}/api/search?q=${this.props.searchQuery}`).then((responseFromAPI) => {
+    fetch(`${this.props.APIBaseURL}/api/search?q=${this.props.searchQuery}`).then((responseFromAPI) => {
       if (responseFromAPI.status === 200) {
         responseFromAPI.json().then((json) => {
           const newArticles = json.articles;

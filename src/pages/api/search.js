@@ -3,7 +3,9 @@ import { getNewsAPIKey } from '../../lib/getNewsAPIKey';
 
 export default async (req, res) => {
   const search = encodeURIComponent(req.query.q);
-  const responseFromAPI = await fetch(`https://newsapi.org/v2/everything?pageSize=100&page=1&q=${search}&apiKey=${getNewsAPIKey()}`);
+  const responseFromAPI = await fetch(
+    `https://newsapi.org/v2/everything?sortBy=publishedAt&pageSize=100&page=1&q=${search}&apiKey=${getNewsAPIKey()}`
+  );
 
   if (responseFromAPI.status === 429) {
     // attempt get from cache

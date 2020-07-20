@@ -1,0 +1,28 @@
+.footer {
+  display: block;
+  width: 100%;
+  padding: 2rem;
+  background-color: var(--dark-color);
+  box-sizing: border-box;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.footer * {
+  color: #ffffff;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+.footer p:first-child {
+  float: left;
+}
+.footer p:last-child {
+  float: right;
+}
+
+@media only screen and (max-width: 60rem) {
+  .footer p:last-child {
+    float: left;
+    clear: both;
+    margin-top: 0.75rem;
+  }
+}

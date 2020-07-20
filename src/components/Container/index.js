@@ -1,4 +1,4 @@
-import { Nav, Tabs } from '../';
+import { Nav, Tabs, Footer } from '../';
 import NextProgressBar from 'nextjs-progressbar';
 import SearchResults from '../SearchResults';
 
@@ -34,20 +34,23 @@ class Container extends React.Component {
       { name: 'News by Category', mobileName: 'By Category', url: '/by-category' },
     ];
     return (
-      <div>
-        <NextProgressBar color='var(--light-blue-color)' startPosition={0.3} stopDelayMs={200} height={3} options={{ showSpinner: false }} />
-        <Nav handleSearchSubmit={this.handleSearchSubmit} handleSearchInputUpdate={this.handleSearchInputUpdate} />
-        <Tabs displayed={!this.state.searching} tabs={tabs} currentTab={this.props.currentTab}>
-          {this.props.children}
-        </Tabs>
-        <SearchResults
-          displayed={this.state.searching}
-          searchQuery={this.state.searchQuery}
-          onSearchExit={() => {
-            this.setState({ searching: false });
-          }}
-          setSearchFunc={(searchFunc) => (this.search = searchFunc)}
-        />
+      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+        <div style={{ flexGrow: 1, flexShrink: 0, flexBasis: '100%' }}>
+          <NextProgressBar color='var(--light-blue-color)' startPosition={0.3} stopDelayMs={200} height={3} options={{ showSpinner: false }} />
+          <Nav handleSearchSubmit={this.handleSearchSubmit} handleSearchInputUpdate={this.handleSearchInputUpdate} />
+          <Tabs displayed={!this.state.searching} tabs={tabs} currentTab={this.props.currentTab}>
+            {this.props.children}
+          </Tabs>
+          <SearchResults
+            displayed={this.state.searching}
+            searchQuery={this.state.searchQuery}
+            onSearchExit={() => {
+              this.setState({ searching: false });
+            }}
+            setSearchFunc={(searchFunc) => (this.search = searchFunc)}
+          />
+        </div>
+        <Footer />
       </div>
     );
   }

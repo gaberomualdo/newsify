@@ -4,6 +4,5 @@
   max-width: var(--max-width);
   margin: 0 auto;
   height: auto;
-  overflow: hidden;
   position: relative;
 }

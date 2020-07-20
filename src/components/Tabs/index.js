@@ -13,7 +13,7 @@ const Tabs = (props) => {
   };
 
   return (
-    <main className={styles.main}>
+    <main className={styles.main} style={{ display: props.displayed ? 'block' : 'none' }}>
       <div className={styles.tabContainer}>
         <ResponsiveContainer>
           <>

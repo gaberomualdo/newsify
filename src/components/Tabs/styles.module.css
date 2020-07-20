@@ -24,7 +24,6 @@
   user-select: none;
 }
 .tabLink .hoverBorder {
-  content: '';
   position: absolute;
   bottom: 0;
   display: block;
@@ -52,6 +51,9 @@
 }
 
 @media only screen and (max-width: 38rem) {
+  .tabLink {
+    font-size: 0.95rem;
+  }
   .tabLink span[mobile='true'] {
     display: inline-block;
   }

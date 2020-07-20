@@ -1,0 +1,86 @@
+.searchContainer {
+  padding: 2.5rem 1.25rem;
+}
+
+.searchMiscRow {
+  margin-bottom: 2rem;
+}
+.searchMiscRow > * {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.backButton {
+  height: 2.7rem;
+  width: 2.7rem;
+  border: none;
+  text-align: center;
+  background-color: transparent;
+  margin-right: 1rem;
+  font-size: 0;
+  cursor: pointer;
+  transition: transform 0.2s;
+  outline: none;
+  position: relative;
+  box-sizing: border-box;
+  padding: 0.5rem 0;
+}
+.backButton:hover {
+  transform: translateX(-0.25rem);
+}
+
+.backButton svg {
+  display: block;
+  float: left;
+  fill: var(--supermedium-color);
+  height: 100%;
+  width: auto;
+  display: block;
+  transform: scale(-1, 1);
+  transition: fill 0.2s ease-in-out;
+}
+.backButton:hover svg {
+  fill: var(--blue-color);
+}
+.backButton:focus svg,
+.backButton:active svg {
+  fill: var(--dark-blue-color);
+}
+
+.searchHeader {
+  font-size: 1.125rem;
+  line-height: 2.3rem;
+  height: 2.5rem;
+  padding-bottom: 0.25rem;
+  position: relative;
+  max-width: calc(100% - 2.7rem - 1rem);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.searchHeader,
+.searchHeader > * {
+  color: var(--blue-color);
+}
+.searchHeader:after {
+  --bottom-line-width: 2.5rem;
+  content: '';
+  position: absolute;
+  bottom: 0;
+  display: block;
+  height: 0.25rem;
+  width: var(--bottom-line-width);
+  left: calc((100% - var(--bottom-line-width)) / 2);
+  border-radius: 0.25rem;
+  background-color: var(--blue-color);
+}
+@media only screen and (max-width: 550px) {
+  .backButton {
+    margin-right: 0.75rem;
+  }
+  .searchHeader {
+    font-size: 0.95rem;
+    max-width: calc(100% - 2.7rem - 0.75rem);
+  }
+}

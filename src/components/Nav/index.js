@@ -12,7 +12,7 @@ const Nav = (props) => {
               <Logo />
             </a>
           </Link>
-          <Search onSubmit={props.handleSearchSubmit} />
+          <Search onSubmit={props.handleSearchSubmit} onInputChange={props.handleSearchInputUpdate} />
         </>
       </ResponsiveContainer>
     </div>

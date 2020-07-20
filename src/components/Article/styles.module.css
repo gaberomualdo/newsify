@@ -1,0 +1,111 @@
+.article {
+  width: 100%;
+  display: flex;
+
+  margin-bottom: 2.5rem;
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 0 0.15rem 0.6rem var(--shadow-color);
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 6px;
+  backface-visibility: hidden;
+  text-decoration: none;
+}
+
+@media only screen and (min-width: 550px) {
+  .article:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: 0 0.5rem 2rem var(--shadow-color);
+  }
+  .article:active {
+    transform: translateY(-0.15rem);
+    box-shadow: 0 0.3rem 1.2rem var(--shadow-color);
+  }
+}
+
+.imageContainer,
+.contentContainer {
+  flex-shrink: 0;
+  flex-grow: 0;
+  position: relative;
+}
+
+.imageContainer {
+  flex-basis: 20rem;
+}
+.article[image='false'] .imageContainer,
+.article[image-failed='true'] .imageContainer {
+  display: none;
+}
+
+.contentContainer {
+  flex-basis: 100%;
+}
+.article[image='true']:not([image-failed='true']) .contentContainer {
+  flex-basis: calc(100% - 20rem);
+}
+
+.imageContainer img {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  background-color: var(--light-color);
+}
+
+.contentContainer {
+  padding: 1.75rem 2rem;
+  box-sizing: border-box;
+}
+
+.contentContainer > h1 {
+  font-size: 1.75rem;
+  line-height: 1.4;
+  margin-bottom: 0.65rem;
+  transition: color 0.2s;
+}
+.article:hover .contentContainer > h1 {
+  color: var(--blue-color);
+}
+.contentContainer > p {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--regular-color);
+  opacity: 0.8;
+}
+
+.contentBottomArea {
+  display: block;
+  margin-top: 0.85rem;
+  opacity: 0.85;
+}
+
+.contentBottomArea *:first-child {
+  float: left;
+}
+
+.contentBottomArea *:last-child {
+  float: right;
+  opacity: 0.8;
+}
+.contentBottomArea * {
+  font-size: 0.9rem;
+}
+
+@media only screen and (max-width: 60rem) {
+  .imageContainer {
+    flex-basis: 65vw;
+  }
+  .contentContainer {
+    zoom: 75%;
+  }
+  .article {
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+}

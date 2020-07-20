@@ -14,6 +14,9 @@ const Search = (props) => {
       onClick={(e) => {
         e.target.select();
       }}
+      onChange={(event) => {
+        props.onInputChange(event);
+      }}
       spellCheck={false}
     />
   );

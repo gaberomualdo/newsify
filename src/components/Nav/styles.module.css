@@ -3,5 +3,8 @@
   box-sizing: border-box;
   padding: 0.75rem 1.25rem;
   box-shadow: 0 0.15rem 0.6rem var(--shadow-color);
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  background-color: #ffffff;
 }

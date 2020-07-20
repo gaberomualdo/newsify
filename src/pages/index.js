@@ -7,6 +7,7 @@ export default function Home({ errorCode, articles, APIBaseURL }) {
     <>
       <Head>
         <title>Next.js News</title>
+        <link rel='shortcut icon' href='/favicon.png' />
       </Head>
 
       <Container currentTab={0} APIBaseURL={APIBaseURL}>

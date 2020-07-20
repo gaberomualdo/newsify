@@ -24,6 +24,7 @@ export default function Home(props) {
     <>
       <Head>
         <title>Next.js News &bull; News By Topic</title>
+        <link rel='shortcut icon' href='/favicon.png' />
       </Head>
 
       <Container currentTab={2} APIBaseURL={props.APIBaseURL}>

@@ -69,9 +69,16 @@
   margin-bottom: 0.65rem;
   transition: color 0.2s;
 }
-.article:hover .contentContainer > h1 {
+.article:active .contentContainer > h1 {
   color: var(--blue-color);
 }
+
+@media only screen and (min-width: 550px) {
+  .article:hover .contentContainer > h1 {
+    color: var(--blue-color);
+  }
+}
+
 .contentContainer > p {
   font-size: 1rem;
   line-height: 1.65;

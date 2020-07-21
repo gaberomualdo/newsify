@@ -56,7 +56,14 @@ const Article = ({ article }) => {
   const [imageFailed, setImageFailed] = useState(false);
 
   return (
-    <a className={styles.article} href={url} target='_blank' image={imageURL ? 'true' : 'false'} image-failed={imageFailed ? 'true' : 'false'}>
+    <a
+      className={styles.article}
+      rel='noreferrer'
+      href={url}
+      target='_blank'
+      image={imageURL ? 'true' : 'false'}
+      image-failed={imageFailed ? 'true' : 'false'}
+    >
       <div className={styles.imageContainer}>
         {imageURL ? (
           <LazyLoad once={true}>

@@ -6,3 +6,9 @@
   height: auto;
   position: relative;
 }
+
+@media only screen and (max-width: 1600px) {
+  .responsiveContainer {
+    --max-width: 64rem;
+  }
+}

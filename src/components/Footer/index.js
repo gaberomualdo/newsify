@@ -8,7 +8,7 @@ const Footer = () => {
         <p>
           Next.js News is an application built by{' '}
           <a href='https://xtrp.io/' target='_blank'>
-            Fred Adams
+            Gabriel Romualdo
           </a>
           .
         </p>

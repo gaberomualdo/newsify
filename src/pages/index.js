@@ -6,7 +6,7 @@ export default function Home({ errorCode, articles, APIBaseURL }) {
   return (
     <>
       <Head>
-        <title>Next.js News</title>
+        <title>Kalva</title>
         <link rel='shortcut icon' href='/favicon.png' />
       </Head>
 

@@ -23,7 +23,7 @@ export default function Home(props) {
   return (
     <>
       <Head>
-        <title>Next.js News &bull; News By Topic</title>
+        <title>Kalva &bull; News By Topic</title>
         <link rel='shortcut icon' href='/favicon.png' />
       </Head>
 

@@ -69,7 +69,7 @@ const Article = ({ article }) => {
           <LazyLoad once={true}>
             <img
               src={imageURL}
-              alt={title + ' - Next.js News'}
+              alt={title + ' - Kalva'}
               onError={() => {
                 setImageFailed(true);
               }}

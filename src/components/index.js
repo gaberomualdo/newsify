@@ -8,3 +8,5 @@ export { default as Article } from './Article';
 export { default as ErrorMessage } from './ErrorMessage';
 export { default as Loading } from './Loading';
 export { default as Footer } from './Footer';
+export { default as LinedHeader } from './LinedHeader';
+export { default as ArticleCarousel } from './ArticleCarousel';

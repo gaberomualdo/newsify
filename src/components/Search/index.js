@@ -3,7 +3,7 @@ import styles from './styles.module.css';
 const Search = (props) => {
   return (
     <input
-      className={styles.input}
+      className={`${styles.input} ${props.className}`}
       type='text'
       aria-label='Search'
       placeholder='Search News...'

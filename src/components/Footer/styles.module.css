@@ -1,29 +1,105 @@
+.footerOuter {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  transform: translateY(calc(100% - 2.5rem));
+  transition: all 0.2s;
+  width: 100%;
+}
+@media only screen and (max-width: 979px) {
+  .footerOuter {
+    bottom: 3rem;
+  }
+}
+.footerOuter.expanded {
+  transform: translateY(0);
+}
+.expandButton {
+  float: right;
+  border: none;
+  background-color: #333;
+  color: #fff;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  font-size: 1rem;
+  padding: 0 1rem;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  cursor: pointer;
+}
+@media only screen and (max-width: 1000px) {
+  .expandButton {
+    margin-right: 0.5rem;
+  }
+}
 .footer {
-  display: block;
   width: 100%;
   padding: 2rem;
-  background-color: var(--dark-color);
+  background-color: #333;
   box-sizing: border-box;
   overflow: hidden;
   flex-shrink: 0;
   -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
 }
-.footer * {
-  color: #ffffff;
-  font-size: 1rem;
-  line-height: 1.75;
-}
-.footer p:first-child {
-  float: left;
-}
-.footer p:last-child {
-  float: right;
+.footer > * {
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
-@media only screen and (max-width: 60rem) {
-  .footer p:last-child {
-    float: left;
-    clear: both;
-    margin-top: 0.75rem;
+@media only screen and (max-width: 800px) {
+  .footer > * {
+    flex-direction: column;
   }
+  .footer > * > *:first-child {
+    margin-bottom: 1.5rem;
+  }
+  .right .inner > *:not(:last-child) {
+    margin-bottom: 1.75rem !important;
+  }
+}
+
+.footer * {
+  color: #fff;
+}
+
+.logo {
+  filter: brightness(10000%);
+  flex: 0 0 auto;
+}
+
+.right {
+  flex: 1 1 100%;
+  text-align: right;
+}
+.right .inner {
+  display: inline-flex;
+  flex-direction: column;
+}
+.right .inner > * {
+  text-align: center;
+}
+.right .inner > *:not(:last-child) {
+  margin-bottom: 0.75rem;
+}
+.right .inner > *:first-child {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.right .inner > * > * {
+  text-align: center;
+}
+.footer a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  transition: all 0.2s;
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+}
+.footer a:hover {
+  opacity: 1;
+  border-bottom: 1px solid #fff;
 }

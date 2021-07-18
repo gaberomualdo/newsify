@@ -1,6 +1,10 @@
-import { ResponsiveContainer, Loading, ErrorMessage, Article } from '../';
+import {
+  Article,
+  ErrorMessage,
+  Loading,
+  ResponsiveContainer,
+} from '../';
 import styles from './styles.module.css';
-import { getAPIBaseURL } from '../../lib/getAPIBaseURL';
 
 class SearchResults extends React.Component {
   constructor(props) {
@@ -50,15 +54,17 @@ class SearchResults extends React.Component {
                 </svg>
               </button>
               <div className={styles.searchHeader}>
-                <span>Search Results For: '</span>
+                <span>Results for </span>
                 <strong>{this.state.resultsSearchQuery}</strong>
-                <span>'</span>{' '}
+                <span></span>{' '}
               </div>
             </div>
             {this.state.errorCode ? (
-              <ErrorMessage displayed={this.state.errorCode !== undefined}>
-                An error occurred while fetching articles with status code {this.state.errorCode}.
-              </ErrorMessage>
+              <div style={{ padding: '0 1.25rem' }}>
+                <ErrorMessage displayed={this.state.errorCode !== undefined}>
+                  An error occurred while fetching articles with status code {this.state.errorCode}.
+                </ErrorMessage>
+              </div>
             ) : null}
             {this.state.articles && this.state.articles.length > 0 ? (
               <>

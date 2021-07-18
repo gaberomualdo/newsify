@@ -1,5 +1,10 @@
-import { Nav, Tabs, Footer } from '../';
 import NextProgressBar from 'nextjs-progressbar';
+
+import {
+  Footer,
+  Nav,
+  Tabs,
+} from '../';
 import SearchResults from '../SearchResults';
 
 class Container extends React.Component {
@@ -37,7 +42,12 @@ class Container extends React.Component {
       <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         <div style={{ flexGrow: 1, flexShrink: 0, flexBasis: '100%' }}>
           <NextProgressBar color='var(--light-blue-color)' startPosition={0.3} stopDelayMs={200} height={3} options={{ showSpinner: false }} />
-          <Nav handleSearchSubmit={this.handleSearchSubmit} handleSearchInputUpdate={this.handleSearchInputUpdate} />
+          <Nav
+            handleSearchSubmit={this.handleSearchSubmit}
+            handleSearchInputUpdate={this.handleSearchInputUpdate}
+            tabs={tabs}
+            currentTab={this.props.currentTab}
+          />
           <Tabs displayed={!this.state.searching} tabs={tabs} currentTab={this.props.currentTab}>
             {this.props.children}
           </Tabs>
@@ -51,7 +61,7 @@ class Container extends React.Component {
             setSearchFunc={(searchFunc) => (this.search = searchFunc)}
           />
         </div>
-        <Footer />
+        <Footer pages={tabs} />
       </div>
     );
   }

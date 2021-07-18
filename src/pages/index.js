@@ -1,16 +1,24 @@
 import Head from 'next/head';
-import { Article, Container, ErrorMessage } from '../components';
+
+import {
+  Article,
+  ArticleCarousel,
+  Container,
+  ErrorMessage,
+} from '../components';
 import { getAPIBaseURL } from '../lib/getAPIBaseURL';
 
 export default function Home({ errorCode, articles, APIBaseURL }) {
   return (
     <>
       <Head>
-        <title>Kalva</title>
+        <title>Newsify</title>
         <link rel='shortcut icon' href='/favicon.png' />
+        <script type='text/javascript' src='//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-60f392defb0a7974'></script>
       </Head>
 
       <Container currentTab={0} APIBaseURL={APIBaseURL}>
+        {articles && articles.length > 0 ? <ArticleCarousel articles={articles} /> : null}
         {articles && articles.length > 0 ? (
           <>
             {articles.map((article, idx) => (

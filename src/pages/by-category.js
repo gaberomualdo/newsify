@@ -1,7 +1,15 @@
+import { useState } from 'react';
+
 import Head from 'next/head';
 import Select from 'react-select';
-import { Container, ErrorMessage, Article, Loading } from '../components';
-import { useState } from 'react';
+
+import {
+  Article,
+  Container,
+  ErrorMessage,
+  LinedHeader,
+  Loading,
+} from '../components';
 import { getAPIBaseURL } from '../lib/getAPIBaseURL';
 
 export default function Home(props) {
@@ -23,16 +31,17 @@ export default function Home(props) {
   return (
     <>
       <Head>
-        <title>Kalva &bull; News By Topic</title>
+        <title>Newsify &bull; News By Topic</title>
         <link rel='shortcut icon' href='/favicon.png' />
       </Head>
 
       <Container currentTab={2} APIBaseURL={props.APIBaseURL}>
-        <div style={{ marginBottom: '2rem' }}>
+        <div className='select-section'>
+          <LinedHeader>Choose a Category</LinedHeader>
           <Select
             defaultValue={props.presetCategory}
             placeholder='Choose a Category...'
-            noOptionsMessage={() => 'No Categories Available. This is Likely an Internal Server Error.'}
+            noOptionsMessage={() => 'No categories found.'}
             options={props.categories}
             onChange={(selectedOptions) => {
               updateArticles(selectedOptions);

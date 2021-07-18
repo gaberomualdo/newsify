@@ -1,38 +1,39 @@
 .input {
+  flex: 1 1 100%;
+
   display: block;
-  height: 2.5rem;
+  height: 3rem;
 
-  position: absolute;
-  right: 0;
-  top: 0.25rem;
-
-  line-height: 2.5rem;
+  line-height: 3rem;
   border: none;
-  padding-left: 2.5rem;
+  padding-left: 3rem;
   background-image: url(/search.png);
   background-size: 1.25rem 1.25rem;
-  background-position: 0.625rem calc(0.625rem - 1px);
+  background-position: 1rem center;
   background-repeat: no-repeat;
-  border: 1px solid var(--light-color);
+  background-color: var(--lighter-color);
   border-radius: 3px;
   box-sizing: border-box;
   outline: none;
-  font-size: 0.9rem;
-  width: 2.5rem;
+  font-size: 1.1rem;
   cursor: pointer;
-  transition: border-color 0.35s ease-in-out, width 0.35s ease-in-out, padding-right 0.35s;
+  transition: background-color 0.2s ease-in-out, width 0.2s ease-in-out, padding-right 0.2s;
+  padding-right: 0.9rem;
+  cursor: text;
+  width: 30rem;
 }
 .input::placeholder {
   color: var(--medium-color);
 }
 .input:focus {
-  padding-right: 0.9rem;
-  cursor: text;
-  width: 20rem;
-  border-color: var(--supermedium-color);
+  background-color: var(--light-color);
 }
 
 @media only screen and (max-width: 35rem) {
+  .input:not(:focus) {
+    width: 2.5rem;
+    padding-right: 0;
+  }
   .input:focus {
     width: 100%;
   }

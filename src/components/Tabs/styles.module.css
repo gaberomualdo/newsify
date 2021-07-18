@@ -1,67 +1,8 @@
 .main {
   padding: 2.5rem 1.25rem;
 }
-
-.tabContainer {
-  width: 100%;
-  font-size: 0;
-  box-sizing: border-box;
-  margin-bottom: 2rem;
-}
-
-.tabLink {
-  font-size: 1.125rem;
-  height: 2.5rem;
-  line-height: 2.5rem;
-  display: inline-block;
-  position: relative;
-  text-decoration: none;
-  text-align: center;
-  padding-bottom: 0.25rem;
-  color: var(--regular-color);
-  transition: color 0.3s;
-  cursor: pointer;
-  user-select: none;
-}
-.tabLink .hoverBorder {
-  position: absolute;
-  bottom: 0;
-  display: block;
-  height: 0.25rem;
-  width: var(--bottom-line-width);
-  left: calc((100% - var(--bottom-line-width)) / 2);
-  border-radius: 0.25rem;
-  background-color: transparent;
-  transition: left 0.3s ease-in-out, width 0.3s ease-in-out, background-color 0.2s ease-in-out;
-}
-.tabLink:hover .hoverBorder,
-.tabLink[active='true'] .hoverBorder {
-  background-color: var(--blue-color);
-}
-.tabLink[active='true'] {
-  color: var(--blue-color);
-}
-
-.tabLink span {
-  color: inherit;
-}
-
-.tabLink span[mobile='true'] {
-  display: none;
-}
-
-@media only screen and (max-width: 38rem) {
-  .tabLink {
-    font-size: 0.95rem;
+@media only screen and (max-width: 40rem) {
+  .main {
+    padding: 0;
   }
-  .tabLink span[mobile='true'] {
-    display: inline-block;
-  }
-  .tabLink span[mobile='false'] {
-    display: none;
-  }
-}
-
-.tabLink:not(:last-child) {
-  margin-right: 1rem;
 }

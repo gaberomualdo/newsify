@@ -9,9 +9,11 @@
   },
   "dependencies": {
     "framer-motion": "^2.1.0",
+    "lodash.clonedeep": "^4.5.0",
     "moment": "^2.27.0",
     "next": "9.4.4",
     "nextjs-progressbar": "^0.0.5",
+    "pure-react-carousel": "^1.27.6",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-lazyload": "^3.0.0",

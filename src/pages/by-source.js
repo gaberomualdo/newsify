@@ -1,7 +1,15 @@
+import { useState } from 'react';
+
 import Head from 'next/head';
 import Select from 'react-select';
-import { Container, ErrorMessage, Article, Loading } from '../components';
-import { useState } from 'react';
+
+import {
+  Article,
+  Container,
+  ErrorMessage,
+  LinedHeader,
+  Loading,
+} from '../components';
 import { getAPIBaseURL } from '../lib/getAPIBaseURL';
 
 export default function Home(props) {
@@ -32,16 +40,17 @@ export default function Home(props) {
   return (
     <>
       <Head>
-        <title>Kalva &bull; News By Source</title>
+        <title>Newsify &bull; News By Source</title>
         <link rel='shortcut icon' href='/favicon.png' />
       </Head>
 
       <Container currentTab={1} APIBaseURL={props.APIBaseURL}>
-        <div style={{ marginBottom: '2rem' }}>
+        <div className='select-section'>
+          <LinedHeader>Select Your Favorite Sources</LinedHeader>
           <Select
             defaultValue={props.presetSources}
             placeholder='Choose a Source...'
-            noOptionsMessage={() => 'No Sources Available. This is Likely an Internal Server Error.'}
+            noOptionsMessage={() => 'No sources found.'}
             options={props.sources}
             onChange={(selectedOptions) => {
               updateArticles(selectedOptions);

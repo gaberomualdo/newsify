@@ -1,6 +1,8 @@
-import moment from 'moment';
 import { useState } from 'react';
+
+import moment from 'moment';
 import LazyLoad from 'react-lazyload';
+
 import styles from './styles.module.css';
 
 const parseNull = (str) => {
@@ -69,7 +71,7 @@ const Article = ({ article }) => {
           <LazyLoad once={true}>
             <img
               src={imageURL}
-              alt={title + ' - Kalva'}
+              alt={title + ' - Newsify'}
               onError={() => {
                 setImageFailed(true);
               }}

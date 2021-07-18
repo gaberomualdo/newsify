@@ -1,0 +1,136 @@
+.carousel {
+  margin-bottom: 2.5rem;
+  box-shadow: 0 0.15rem 0.6rem var(--shadow-color);
+  overflow: hidden;
+  border-radius: 6px;
+  background-color: #000;
+  position: relative;
+}
+
+.carousel * {
+  color: #fff;
+}
+
+.slide {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), var(--bg-image);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background-color: transparent;
+  height: 1.6rem;
+  cursor: pointer;
+}
+.button svg {
+  fill: #fff;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+  height: 100%;
+  width: auto;
+}
+.button:hover svg {
+  opacity: 1;
+}
+
+.button.back {
+  left: 1rem;
+}
+.button.next {
+  right: 1rem;
+}
+
+@media only screen and (max-width: 1000px) {
+  .button {
+    display: none;
+  }
+}
+
+.dots {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dots > * {
+  background-color: transparent;
+  border: none;
+  width: 3rem;
+  height: 4px;
+  background-color: #fff;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+.dots > *:hover {
+  opacity: 0.65;
+}
+.dots > *:disabled {
+  opacity: 1;
+}
+.dots > *:not(:last-child) {
+  margin-right: 0.5rem;
+}
+
+.slide a {
+  width: 100%;
+  height: calc(100% - 3rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+.contentContainer {
+  width: 850px;
+  max-width: 90%;
+}
+.contentContainer h1 {
+  font-size: 2.65rem;
+  font-weight: 600;
+  line-height: 1.25;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.75);
+}
+
+.contentContainer .meta {
+  margin-top: 0.75rem;
+  margin-bottom: 0.95rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(2px);
+  display: inline-block;
+  border-radius: 1000px;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+.contentContainer .meta strong {
+  font-weight: 600;
+}
+.contentContainer .meta + p {
+  line-height: 1.75;
+  opacity: 0.7;
+}
+
+@media only screen and (max-width: 70rem) {
+  .contentContainer h1 {
+    font-size: 1.8rem;
+  }
+
+  .contentContainer .meta {
+    font-size: 0.9rem;
+  }
+  .contentContainer .meta + p {
+    font-size: 0.9rem;
+  }
+}
+@media only screen and (max-width: 50rem) {
+  .carousel {
+    display: none;
+  }
+}

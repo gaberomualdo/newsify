@@ -1,10 +1,116 @@
-.nav {
+.navPlaceholder {
   height: 4.5rem;
+  display: block;
+  width: 100%;
+}
+.nav {
+  min-height: 4.5rem;
   box-sizing: border-box;
   padding: 0.75rem 1.25rem;
   box-shadow: 0 0.15rem 0.6rem var(--shadow-color);
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 9999;
   background-color: #ffffff;
+}
+
+.navInner,
+.mobileNavInner {
+  display: flex;
+  width: 100%;
+}
+.mobileNavInner {
+  flex-direction: column;
+}
+
+.logo {
+  margin-right: 2rem;
+  width: auto;
+  display: block;
+}
+
+.logo,
+.tabContainer {
+  flex: 0 0 auto;
+}
+
+.tabContainer {
+  font-size: 0;
+  box-sizing: border-box;
+  margin-left: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tabLink {
+  font-size: 1.15rem;
+  height: 1.8rem;
+  line-height: 1.8rem;
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  color: var(--regular-color);
+  transition: color 0.3s;
+  cursor: pointer;
+  user-select: none;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+.tabLink[active='true'] {
+  /* font-weight: 600; */
+  border-bottom: 1px dotted var(--dark-color);
+  color: var(--dark-color);
+}
+
+.tabLink span {
+  color: inherit;
+  letter-spacing: -0.025rem;
+}
+
+.tabLink span[mobile='true'] {
+  display: none;
+}
+
+@media only screen and (max-width: 38rem) {
+  .tabLink {
+    font-size: 1.1rem;
+  }
+  .tabLink span[mobile='true'] {
+    display: inline-block;
+  }
+  .tabLink span[mobile='false'] {
+    display: none;
+  }
+}
+
+.tabLink:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem 0;
+}
+.dropdown:not(.open) {
+  display: none;
+}
+.dropdown .search {
+  margin-bottom: 0.5rem;
+}
+.dropdown > * {
+  width: 100% !important;
+}
+.dropdown .tabLink {
+  margin-top: 0.75rem;
+}
+
+.dropdownButton {
+  float: right;
+  border: none;
+  background-color: transparent;
+  height: 3rem;
 }

@@ -1,0 +1,35 @@
+.linedHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 1rem;
+}
+.line {
+  height: 2px;
+  width: 100%;
+  opacity: 0.35;
+  position: absolute;
+  left: 0;
+  top: calc(50% - 1px);
+  z-index: 1;
+}
+.linedHeader h1 {
+  padding: 0 2rem;
+  background-color: #fff;
+  z-index: 2;
+  text-align: center;
+  line-height: 1;
+}
+.linedHeader h1 strong {
+  font-size: 2rem;
+  letter-spacing: 0.05rem;
+  text-transform: uppercase;
+  color: var(--dark-color);
+  font-weight: 600;
+}
+@media only screen and (max-width: 700px) {
+  .linedHeader h1 strong {
+    font-size: 1.5rem;
+  }
+}

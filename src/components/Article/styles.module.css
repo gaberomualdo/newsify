@@ -68,11 +68,11 @@
   transition: color 0.2s;
   font-weight: 600;
 }
-.article:active .contentContainer > h1 {
-  color: var(--dark-blue-color) !important;
-}
 
 @media only screen and (min-width: 550px) {
+  .article:active .contentContainer > h1 {
+    color: var(--dark-blue-color) !important;
+  }
   .article:hover .contentContainer > h1 {
     color: var(--blue-color);
   }
@@ -115,8 +115,21 @@
     flex-direction: column;
     margin-bottom: 1rem;
   }
+  .contentContainer > h1 {
+    font-size: 1.35rem;
+    line-height: 1.3;
+  }
+  .contentContainer > p {
+    font-size: 0.9rem;
+  }
+  .contentBottomArea * {
+    font-size: 0.8rem;
+  }
 }
 @media only screen and (max-width: 40rem) {
+  .imageContainer {
+    flex-basis: 50vw;
+  }
   .article {
     box-shadow: none !important;
     border-radius: 0;

@@ -1,4 +1,3 @@
-import * as cloneDeep from 'lodash.clonedeep';
 import moment from 'moment';
 import {
   ButtonBack,
@@ -10,24 +9,6 @@ import {
 } from 'pure-react-carousel';
 
 import styles from './styles.module.css';
-
-const shuffleArray = (passedArray) => {
-  const array = cloneDeep(passedArray);
-  var currentIndex = array.length,
-    randomIndex;
-
-  // While there remain elements to shuffle...
-  while (0 !== currentIndex) {
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-
-    // And swap it with the current element.
-    [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
-  }
-
-  return array;
-};
 
 const parseNull = (str) => {
   if (str === 'null') {
@@ -62,45 +43,43 @@ const removeSourceFromTitle = (title) => {
 };
 
 const ArticleCarousel = ({ articles }) => {
-  articles = shuffleArray(articles);
   const ARTICLES_COUNT = 7;
-  let articleIdx = 0;
-  const articleElms = articles
-    .map((article) => {
-      const author = parseNull(article.source.name) || parseNull(article.author) || 'Unknown';
-      let title = parseNull(article.title);
+  const articleElms = [];
 
-      const date = moment(parseNull(article.publishedAt) || new Date().toISOString(), moment.ISO_8601).calendar();
-      const imageURL = parseNull(article.urlToImage);
-      const url = parseNull(article.url);
-      const description =
-        parseNull(article.description) || parseNull(contentToPreview(article.content)) || 'No description provided for this article.';
+  // go in reverse order so that the slideshow isn't just the first articles
+  for (let i = articles.length - 1; i >= 0; i--) {
+    if (articleElms.length >= ARTICLES_COUNT) break;
+    const article = articles[i];
 
-      if (title) title = removeSourceFromTitle(title);
+    const author = parseNull(article.source.name) || parseNull(article.author) || 'Unknown';
+    let title = parseNull(article.title);
+    if (title) title = removeSourceFromTitle(title);
+    const date = moment(parseNull(article.publishedAt) || new Date().toISOString(), moment.ISO_8601).calendar();
+    const imageURL = parseNull(article.urlToImage);
+    const url = parseNull(article.url);
+    const description = parseNull(article.description) || parseNull(contentToPreview(article.content)) || 'No description provided for this article.';
 
-      // title and url are required
-      if (!title || !url || title.trim().length === 0 || url.trim().length === 0 || imageURL === null) return null;
+    // title and url are required
+    if (!title || !url || title.trim().length === 0 || url.trim().length === 0 || imageURL === null) continue;
 
-      // new slide with the article
-      const res = (
-        <Slide index={articleIdx} className={styles.slide} style={{ '--bg-image': `url('${imageURL}')` }}>
-          <a rel='noreferrer' href={url} target='_blank'>
-            <div className={styles.contentContainer}>
-              <h1>{title}</h1>
-              <div className={styles.meta}>
-                <p>
-                  By&nbsp;<strong>{author}</strong> &nbsp;&bull;&nbsp; {date}
-                </p>
-              </div>
-              <p>{description}</p>
+    // new slide with the article
+    const res = (
+      <Slide index={articleElms.length} className={styles.slide} style={{ '--bg-image': `url('${imageURL}')` }}>
+        <a rel='noreferrer' href={url} target='_blank'>
+          <div className={styles.contentContainer}>
+            <h1>{title}</h1>
+            <div className={styles.meta}>
+              <p>
+                By&nbsp;<strong>{author}</strong> &nbsp;&bull;&nbsp; {date}
+              </p>
             </div>
-          </a>
-        </Slide>
-      );
-      return res;
-    })
-    .filter((e) => e !== null)
-    .slice(0, ARTICLES_COUNT);
+            <p>{description}</p>
+          </div>
+        </a>
+      </Slide>
+    );
+    articleElms.push(res);
+  }
 
   return (
     <>

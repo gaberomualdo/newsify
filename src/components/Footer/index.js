@@ -25,7 +25,7 @@ const Footer = (props) => {
               <p>
                 {props.pages.map((page, i) => {
                   return (
-                    <Link href={page.url}>
+                    <Link href={page.url} key={i}>
                       <a>{page.name}</a>
                     </Link>
                   );

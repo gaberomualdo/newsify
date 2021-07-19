@@ -1,10 +1,13 @@
+.articleContainer {
+  position: relative;
+}
+
 .article {
   width: 100%;
   display: flex;
 
   margin-bottom: 2.5rem;
   box-shadow: 0 0.15rem 0.6rem var(--shadow-color);
-  overflow: hidden;
   border-radius: 6px;
   background-color: #ffffff;
   transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
@@ -12,6 +15,10 @@
   user-select: none;
   backface-visibility: hidden;
   text-decoration: none;
+}
+
+.menu {
+  box-shadow: 0 0.1rem 0.4rem var(--shadow-color);
 }
 
 @media only screen and (min-width: 550px) {
@@ -67,6 +74,7 @@
   margin-bottom: 0.65rem;
   transition: color 0.2s;
   font-weight: 600;
+  padding-right: 2rem;
 }
 
 @media only screen and (min-width: 550px) {
@@ -107,6 +115,9 @@
   .imageContainer {
     flex-basis: 65vw;
   }
+  .article:not([image='false']):not([image-failed='true']) + .menuContainer {
+    top: 65vw !important;
+  }
   .contentContainer {
     padding: 1.2rem 1.3rem;
     padding-bottom: 2rem;
@@ -118,6 +129,7 @@
   .contentContainer > h1 {
     font-size: 1.35rem;
     line-height: 1.3;
+    padding-right: 2.5rem;
   }
   .contentContainer > p {
     font-size: 0.9rem;
@@ -130,12 +142,16 @@
   .imageContainer {
     flex-basis: 50vw;
   }
+  .article:not([image='false']):not([image-failed='true']) + .menuContainer {
+    top: 50vw !important;
+  }
   .article {
     box-shadow: none !important;
     border-radius: 0;
     margin: 0;
   }
-  .article:not([image='true']:not([image-failed='true'])) {
+  .article[image='false'],
+  .article[image-failed='true'] {
     border-top: 2px solid var(--light-color);
   }
 }

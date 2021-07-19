@@ -37,6 +37,7 @@ class Container extends React.Component {
       { name: 'Latest News', mobileName: 'Latest News', url: '/' },
       { name: 'News by Source', mobileName: 'By Source', url: '/by-source' },
       { name: 'News by Category', mobileName: 'By Category', url: '/by-category' },
+      { name: 'About', mobileName: 'About', url: '/about' },
     ];
     return (
       <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>

@@ -32,15 +32,12 @@ const Footer = (props) => {
                 })}
               </p>
               <p>
-                <span style={{ marginRight: '1.5rem' }}>
+                <span>
                   Built by{' '}
                   <a href='https://xtrp.io/' target='_blank'>
                     Gabriel Romualdo
                   </a>
-                  .
-                </span>
-                <span>
-                  Check out the{' '}
+                  . Open-sourced on the{' '}
                   <a href='https://github.com/xtrp/newsify' target='_blank'>
                     GitHub Repo
                   </a>

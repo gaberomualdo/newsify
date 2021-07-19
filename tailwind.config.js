@@ -20,6 +20,9 @@ transition ease-in duration-75
 transform opacity-100 scale-100
 transform opacity-0 scale-95
 origin-top-right absolute right-2 mt-2 w-48 rounded-md py-1 bg-white focus:outline-none z-50
+prose
+prose-md
+prose-lg
 `
           .trim()
           .split('\n')
@@ -35,5 +38,5 @@ origin-top-right absolute right-2 mt-2 w-48 rounded-md py-1 bg-white focus:outli
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 };

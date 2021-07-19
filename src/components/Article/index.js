@@ -69,8 +69,9 @@ const Article = ({ article }) => {
 
   const [imageFailed, setImageFailed] = useState(false);
 
+  // IMPORTANT: whenever a Tailwind.css class is used, add it to the purge safelist in tailwind.config.js
   const menuItemClassnames = (active) =>
-    classNames(active ? 'bg-gray-100' : '', 'transition-all block px-4 py-2 text-sm text-gray-700 w-full text-left truncate');
+    classNames(active ? 'bg-gray-100' : 'bg-white', 'cursor-pointer transition-all block px-4 py-2 text-sm text-gray-700 w-full text-left truncate');
 
   return (
     <div className={styles.articleContainer}>
@@ -110,7 +111,7 @@ const Article = ({ article }) => {
         {({ open }) => (
           <>
             <div>
-              <Menu.Button className='transition-all max-w-xs bg-white border rounded-full flex items-center text-sm outline-none p-2 md:hover:bg-gray-100'>
+              <Menu.Button className='cursor-pointer transition-all max-w-xs bg-white border rounded-full flex items-center text-sm outline-none p-2 md:hover:bg-gray-100'>
                 {open ? (
                   <svg className='h-5 w-5 p-0.5' xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'>
                     <path d='M23 20.168l-8.185-8.187 8.185-8.174-2.832-2.807-8.182 8.179-8.176-8.179-2.81 2.81 8.186 8.196-8.186 8.184 2.81 2.81 8.203-8.192 8.18 8.192z' />

@@ -20,6 +20,9 @@
 .menu {
   box-shadow: 0 0.1rem 0.4rem var(--shadow-color);
 }
+.menu a {
+  text-decoration: none;
+}
 
 @media only screen and (min-width: 550px) {
   .article:hover {

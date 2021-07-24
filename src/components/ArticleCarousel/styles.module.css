@@ -14,6 +14,7 @@
 .slide {
   background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), var(--bg-image);
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
 }
 

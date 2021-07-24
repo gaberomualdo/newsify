@@ -85,7 +85,7 @@ const ArticleCarousel = ({ articles }) => {
     <>
       <CarouselProvider
         naturalSlideWidth={100}
-        naturalSlideHeight={40}
+        naturalSlideHeight={35}
         totalSlides={articleElms.length}
         className={styles.carousel}
         isPlaying={true}

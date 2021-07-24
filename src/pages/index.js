@@ -14,7 +14,7 @@ export default function Home({ errorCode, articles, APIBaseURL }) {
       <Head>
         <title>Newsify</title>
         <link rel='shortcut icon' href='/favicon.png' />
-        <script type='text/javascript' src='//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-60f392defb0a7974'></script>
+        {/* <script type='text/javascript' src='//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-60f392defb0a7974'></script> */}
       </Head>
 
       <Container currentTab={0} APIBaseURL={APIBaseURL}>

@@ -13,7 +13,7 @@
     "@tailwindcss/typography": "^0.4.1",
     "framer-motion": "^2.1.0",
     "lodash.clonedeep": "^4.5.0",
-    "moment": "^2.27.0",
+    "moment": "^2.29.4",
     "next": "9.4.4",
     "nextjs-progressbar": "^0.0.5",
     "pure-react-carousel": "^1.27.6",
